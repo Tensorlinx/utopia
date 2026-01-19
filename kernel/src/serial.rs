@@ -1,8 +1,7 @@
 use uart_16550::SerialPort;
 use spin::Mutex;
 use crate::constants::serial::*;
-use crate::error::{KernelResult, KernelError, SafeWrite};
-use core::fmt;
+use crate::error::{KernelResult, KernelError};
 
 pub static SERIAL1: Mutex<Option<SerialPort>> = Mutex::new(None);
 
@@ -20,7 +19,7 @@ pub fn _print(args: ::core::fmt::Arguments) -> KernelResult<()> {
         serial.write_fmt(args).map_err(|_| KernelError::WriteFailed)?;
         Ok(())
     } else {
-        Err(KernelError::SerialInitFailed)
+        Err(KernelError::HardwareError)
     }
 }
 

@@ -1,5 +1,5 @@
 [workspace]
-members = ["kernel", "os"]
+members = ["kernel", "bootloader"]
 resolver = "2"
 
 [profile.dev]
@@ -12,8 +12,8 @@ opt-level = 3
 lto = true
 
 [workspace.dependencies]
-bootloader = { version = "0.11.10", default-features = false }
-bootloader_api = "0.11.10"
+bootloader = { version = "0.11.14", default-features = false }
+bootloader_api = "0.11.14"
 volatile = "0.2.6"
 spin = "0.5"
 uart_16550 = "0.2.0"
@@ -21,3 +21,23 @@ x86_64 = "0.14.2"
 pc-keyboard = "0.5.0"
 pic8259 = "0.10.1"
 linked_list_allocator = "0.9.0"
+
+[workspace.metadata.package.metadata.cargo-alias]
+# 构建命令
+alias-build = "build"
+alias-kernel = "build --target x86_64-unknown-none -p utopia_kernel"
+alias-bootloader = "build -p utopia_bootloader"
+
+# 运行命令
+alias-run = "run -p utopia_bootloader"
+alias-qemu = "run -p utopia_bootloader"
+alias-debug = "run -p utopia_bootloader"
+
+# 测试命令
+alias-test = "test"
+
+# 清理命令
+alias-clean = "clean"
+
+# 工具安装命令
+alias-install-tools = ["rustup", "component", "add", "rust-src", "llvm-tools-preview"]

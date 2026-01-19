@@ -1,2 +1,30 @@
+# Cargo configuration for Utopia OS
+# This file defines aliases for common development commands
+
+[alias]
+# 构建命令
+build-all = "build"
+kernel = "build --target x86_64-unknown-none -p utopia_kernel"
+bootloader = "build -p utopia_bootloader"
+
+# 运行命令
+run-kernel = "run -p utopia_bootloader"
+qemu = "run -p utopia_bootloader"
+debug = "run -p utopia_bootloader"
+
+# 测试命令
+test-all = "test"
+
+# 清理命令
+clean-all = "clean"
+
+# 工具安装命令
+install-tools = ["rustup", "component", "add", "rust-src", "llvm-tools-preview"]
+
+# 开发工作流命令
+dev = "run -p utopia_bootloader"
+start = "run -p utopia_bootloader"
+
+# 启用必要的特性标志
 [unstable]
 bindeps = true

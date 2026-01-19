@@ -1,12 +1,12 @@
 [package]
-name = "utopia"
+name = "utopia_bootloader"
 version = "0.1.0"
 edition = "2021"
 
 
 
 [[bin]]
-name = "utopia"
+name = "utopia_bootloader"
 path = "src/main.rs"
 
 [dependencies]

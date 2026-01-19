@@ -2,8 +2,8 @@ use core::fmt;
 use spin::Mutex;
 use bootloader_api::info::{FrameBuffer, PixelFormat};
 use crate::constants::vga::*;
-use crate::font::{get_char_data, is_printable};
-use crate::error::{KernelResult, KernelError, SafeWrite};
+use crate::font::get_char_data;
+use crate::error::{KernelResult, KernelError};
 
 // 简单的帧缓冲区文本渲染器
 struct FrameBufferWriter {
@@ -309,19 +309,7 @@ impl fmt::Write for FrameBufferWriter {
     }
 }
 
-impl SafeWrite for FrameBufferWriter {
-    fn safe_write_str(&mut self, s: &str) -> KernelResult<()> {
-        for c in s.chars() {
-            self.write_char(c)?;
-        }
-        Ok(())
-    }
-    
-    fn safe_write_fmt(&mut self, args: fmt::Arguments) -> KernelResult<()> {
-        use core::fmt::Write;
-        self.write_fmt(args).map_err(|_| KernelError::WriteFailed)
-    }
-}
+
 
 pub fn init_vga(framebuffer: &'static mut FrameBuffer) -> KernelResult<()> {
     let mut writer = FrameBufferWriter::new(framebuffer);

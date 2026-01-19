@@ -185,8 +185,3 @@ pub fn get_char_data(c: char) -> &'static [u8; 8] {
     }
 }
 
-/// 检查字符是否为可打印字符
-pub fn is_printable(c: char) -> bool {
-    let char_code = c as usize;
-    char_code >= ASCII_PRINTABLE_START && char_code < ASCII_PRINTABLE_END
-}

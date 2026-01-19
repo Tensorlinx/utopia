@@ -1,4 +1,4 @@
-# Makefile for CZXT OS
+# Makefile for Utopia OS
 
 .PHONY: all build run clean test
 
@@ -11,7 +11,7 @@ build:
 
 # Build and run in QEMU
 run:
-	cargo run
+	cargo run -p utopia_bootloader
 
 # Run tests
 test:
@@ -25,13 +25,11 @@ clean:
 install-tools:
 	rustup component add rust-src
 	rustup component add llvm-tools-preview
-	cargo install bootimage
-	cargo install cargo-xbuild
 
-# Run with QEMU directly
-qemu: build
-	qemu-system-x86_64 -drive format=raw,file=target/x86_64-unknown-none/debug/bootimage-kernel.bin -serial stdio
+# Run with QEMU directly (using bootloader project)
+qemu:
+	cargo run -p utopia_bootloader
 
 # Debug with GDB
-debug: build
-	qemu-system-x86_64 -s -S -drive format=raw,file=target/x86_64-unknown-none/debug/bootimage-czxt-os.bin
+debug:
+	cargo run -p utopia_bootloader
