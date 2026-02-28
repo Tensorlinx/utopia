@@ -1,6 +1,6 @@
 # Makefile for Utopia OS
 
-.PHONY: all build run clean test
+.PHONY: all build run run-uefi clean test
 
 # Default target
 all: build
@@ -9,9 +9,13 @@ all: build
 build:
 	cargo build --target x86_64-unknown-none -p utopia_kernel
 
-# Build and run in QEMU
+# Build and run in QEMU (BIOS mode - default)
 run:
-	cargo run -p utopia_bootloader
+	cargo run -p utopia_bootloader --bin utopia_bootloader
+
+# Build and run in QEMU (UEFI mode)
+run-uefi:
+	cargo run -p utopia_bootloader --bin utopia_bootloader_uefi --features uefi_mode
 
 # Run tests
 test:
@@ -26,10 +30,10 @@ install-tools:
 	rustup component add rust-src
 	rustup component add llvm-tools-preview
 
-# Run with QEMU directly (using bootloader project)
-qemu:
-	cargo run -p utopia_bootloader
+# Build bootloader (BIOS)
+build-bootloader:
+	cargo build -p utopia_bootloader --bin utopia_bootloader
 
-# Debug with GDB
-debug:
-	cargo run -p utopia_bootloader
+# Build bootloader (UEFI)
+build-bootloader-uefi:
+	cargo build -p utopia_bootloader --bin utopia_bootloader_uefi --features uefi_mode

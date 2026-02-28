@@ -14,6 +14,13 @@ fn main() {
         .expect("Failed to create BIOS image");
     println!("cargo:rustc-env=BIOS_PATH={}", bios_path.display());
 
+    // Create a UEFI bootable disk image
+    let uefi_path = out_dir().join("uefi.img");
+    bootloader::UefiBoot::new(&kernel_path)
+        .create_disk_image(&uefi_path)
+        .expect("Failed to create UEFI image");
+    println!("cargo:rustc-env=UEFI_PATH={}", uefi_path.display());
+
     // Rerun if the kernel binary changes
     println!("cargo:rerun-if-changed={}", kernel_path.display());
 }

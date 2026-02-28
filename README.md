@@ -16,14 +16,20 @@ cargo build
 # 仅构建内核
 cargo kernel
 
-# 仅构建启动器
-cargo bootloader
+# 构建 BIOS 启动器
+cargo build -p utopia_bootloader --bin utopia_bootloader
+
+# 构建 UEFI 启动器
+cargo build -p utopia_bootloader --bin utopia_bootloader_uefi --features uefi_mode
 ```
 
 #### 运行命令
 ```bash
-# 运行内核（推荐方式）
-cargo run
+# 运行内核 - BIOS 模式（默认）
+cargo run -p utopia_bootloader --bin utopia_bootloader
+
+# 运行内核 - UEFI 模式
+cargo run -p utopia_bootloader --bin utopia_bootloader_uefi --features uefi_mode
 
 # 或者使用别名
 cargo qemu
@@ -52,8 +58,11 @@ cargo install-tools
 # 构建项目
 make build
 
-# 运行内核
+# 运行内核 - BIOS 模式（默认）
 make run
+
+# 运行内核 - UEFI 模式
+make run-uefi
 
 # 清理
 make clean
@@ -84,8 +93,8 @@ utopia/
 |------|------|----------|
 | `cargo build` | 构建整个项目 | `make build` |
 | `cargo kernel` | 仅构建内核 | - |
-| `cargo bootloader` | 仅构建启动器 | - |
-| `cargo run` | 运行内核 | `make run` |
+| `cargo run -p utopia_bootloader --bin utopia_bootloader` | BIOS 模式运行 | `make run` |
+| `cargo run -p utopia_bootloader --bin utopia_bootloader_uefi --features uefi_mode` | UEFI 模式运行 | `make run-uefi` |
 | `cargo qemu` | 运行内核（别名） | `make qemu` |
 | `cargo debug` | 调试模式运行 | `make debug` |
 | `cargo test` | 运行测试 | `make test` |

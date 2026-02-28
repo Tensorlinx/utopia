@@ -9,9 +9,18 @@ edition = "2021"
 name = "utopia_bootloader"
 path = "src/main.rs"
 
+[[bin]]
+name = "utopia_bootloader_uefi"
+path = "src/main.rs"
+required-features = ["uefi_mode"]
+
+[features]
+default = []
+uefi_mode = []
+
 [dependencies]
 utopia_kernel = { path = "../kernel", artifact = "bin", target = "x86_64-unknown-none" }
 
 [build-dependencies]
-bootloader = { workspace = true, features = ["bios"] }
+bootloader = { workspace = true, features = ["bios", "uefi"] }
 utopia_kernel = { path = "../kernel", artifact = "bin", target = "x86_64-unknown-none" }
