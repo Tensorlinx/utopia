@@ -7,7 +7,7 @@ all: build
 
 # Build the kernel
 build:
-	cargo build
+	cargo build --target x86_64-unknown-none -p utopia_kernel
 
 # Build and run in QEMU
 run:
