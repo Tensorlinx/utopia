@@ -9,21 +9,10 @@ fn main() {
 
     // Create a BIOS bootable disk image
     let bios_path = out_dir().join("bios.img");
-    if let Err(e) = bootloader::BiosBoot::new(&kernel_path)
-        .create_disk_image(&bios_path) {
-        println!("cargo:warning=Failed to create BIOS image: {}", e);
-    } else {
-        println!("cargo:rustc-env=BIOS_PATH={}", bios_path.display());
-    }
-
-    // Create a UEFI bootable disk image  
-    let uefi_path = out_dir().join("uefi.img");
-    if let Err(e) = bootloader::UefiBoot::new(&kernel_path)
-        .create_disk_image(&uefi_path) {
-        println!("cargo:warning=Failed to create UEFI image: {}", e);
-    } else {
-        println!("cargo:rustc-env=UEFI_PATH={}", uefi_path.display());
-    }
+    bootloader::BiosBoot::new(&kernel_path)
+        .create_disk_image(&bios_path)
+        .expect("Failed to create BIOS image");
+    println!("cargo:rustc-env=BIOS_PATH={}", bios_path.display());
 
     // Rerun if the kernel binary changes
     println!("cargo:rerun-if-changed={}", kernel_path.display());

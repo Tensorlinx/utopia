@@ -13,5 +13,5 @@ path = "src/main.rs"
 utopia_kernel = { path = "../kernel", artifact = "bin", target = "x86_64-unknown-none" }
 
 [build-dependencies]
-bootloader = { workspace = true, features = ["bios", "uefi"] }
+bootloader = { workspace = true, features = ["bios"] }
 utopia_kernel = { path = "../kernel", artifact = "bin", target = "x86_64-unknown-none" }
