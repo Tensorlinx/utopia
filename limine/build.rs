@@ -55,10 +55,15 @@ fn main() -> anyhow::Result<()> {
     println!("cargo:warning=Copied kernel to: {}", kernel_dest.display());
 
     // 复制 limine 引导文件到磁盘目录
-    let limine_boot_dir = disk_dir.join("boot").join("limine");
+    // limine-bios.sys 必须在根目录或 /boot 目录
+    let limine_boot_dir = disk_dir.join("boot");
     fs::create_dir_all(&limine_boot_dir)?;
 
-    // 复制必要的 limine 文件
+    // 创建 /boot/limine 目录（Limine 推荐的位置）
+    let limine_dir_dest = limine_boot_dir.join("limine");
+    fs::create_dir_all(&limine_dir_dest)?;
+
+    // 复制必要的 limine 文件到 /boot 目录
     let limine_files = [
         "limine-bios.sys",
         "limine.conf",
@@ -69,12 +74,22 @@ fn main() -> anyhow::Result<()> {
         let dest = limine_boot_dir.join(file);
         if src.exists() {
             fs::copy(&src, &dest)?;
-            println!("cargo:warning=Copied: {}", file);
+            println!("cargo:warning=Copied {} to /boot/", file);
+            
+            // 同时复制到 /boot/limine/ 目录
+            let dest2 = limine_dir_dest.join(file);
+            fs::copy(&src, &dest2)?;
+            println!("cargo:warning=Copied {} to /boot/limine/", file);
         } else if file == &"limine.conf" {
             // 从项目目录复制配置文件
             let conf_src = manifest_dir.join("limine.conf");
             fs::copy(&conf_src, &dest)?;
-            println!("cargo:warning=Copied limine.conf from project");
+            println!("cargo:warning=Copied limine.conf from project to /boot/");
+            
+            // 同时复制到 /boot/limine/
+            let conf_dest2 = limine_dir_dest.join(file);
+            fs::copy(&conf_src, &conf_dest2)?;
+            println!("cargo:warning=Copied limine.conf from project to /boot/limine/");
         }
     }
 
@@ -199,8 +214,15 @@ sudo cp -r "$DISK_DIR"/* "$MOUNT_POINT/"
 # 列出复制的内容
 echo "Disk contents:"
 ls -la "$MOUNT_POINT/"
+echo ""
+echo "Boot directory:"
 ls -la "$MOUNT_POINT/boot/" 2>/dev/null || echo "No boot directory"
+echo ""
+echo "Limine directory:"
 ls -la "$MOUNT_POINT/boot/limine/" 2>/dev/null || echo "No limine directory"
+echo ""
+echo "Checking for limine-bios.sys:"
+find "$MOUNT_POINT" -name "limine-bios.sys" 2>/dev/null || echo "limine-bios.sys not found!"
 
 # 卸载
 sudo umount "$MOUNT_POINT"

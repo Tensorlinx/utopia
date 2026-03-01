@@ -9,9 +9,9 @@ all: build
 build:
 	cargo build --target x86_64-unknown-none -p utopia_kernel
 
-# Build the kernel with limine support
+# Build the kernel with multiboot2 support (for Limine)
 build-kernel-limine:
-	cargo build --target x86_64-unknown-none -p utopia_kernel --no-default-features --features limine
+	cargo build --target x86_64-unknown-none -p utopia_kernel --no-default-features --features multiboot2
 
 # Build and run in QEMU (BIOS mode - default)
 run:

@@ -245,21 +245,60 @@ static MULTIBOOT2_HEADER: Multiboot2Header = Multiboot2Header {
     },
 };
 
+/// 直接写入串口端口（不依赖任何初始化）
+pub unsafe fn write_serial_direct(c: u8) {
+    // 等待串口就绪
+    while (core::ptr::read_volatile(0x3FD as *const u8) & 0x20) == 0 {}
+    // 写入字符
+    core::ptr::write_volatile(0x3F8 as *mut u8, c);
+}
+
+/// 直接打印字符串（用于早期调试）
+pub unsafe fn print_early(s: &str) {
+    for c in s.bytes() {
+        if c == b'\n' {
+            write_serial_direct(b'\r');
+        }
+        write_serial_direct(c);
+    }
+}
+
 /// Multiboot 2 入口点
 #[no_mangle]
-pub extern "C" fn _start_multiboot2(info_ptr: *const Multiboot2Info, magic: u32) -> ! {
-    // 验证魔数
-    if magic != 0x36d76289 {
-        panic!("Invalid Multiboot 2 magic number: {:#x}", magic);
+pub extern "C" fn _start(magic: u32, info_ptr: *const Multiboot2Info) -> ! {
+    // 直接输出调试信息（不依赖任何初始化）
+    unsafe {
+        print_early("\n=== Multiboot2 Entry ===\n");
+        print_early("Magic: ");
+        // 简单输出魔数的十六进制
+        let hex_chars = b"0123456789abcdef";
+        for i in (0..32).step_by(4).rev() {
+            let nibble = ((magic >> i) & 0xF) as usize;
+            write_serial_direct(hex_chars[nibble]);
+        }
+        print_early("\n");
     }
 
-    // 初始化串口（用于早期调试）
+    // 验证魔数
+    if magic != 0x36d76289 {
+        unsafe {
+            print_early("ERROR: Invalid magic!\n");
+        }
+        loop {
+            unsafe { asm!("hlt"); }
+        }
+    }
+
     unsafe {
-        crate::serial::init_serial_early();
+        print_early("Magic OK, parsing info...\n");
     }
 
     // 解析 Multiboot 2 信息
     let boot_info = unsafe { Multiboot2BootInfo::new(info_ptr) };
+
+    unsafe {
+        print_early("Info parsed, jumping to main...\n");
+    }
 
     // 跳转到内核主函数
     crate::kernel_main_multiboot2(&boot_info);

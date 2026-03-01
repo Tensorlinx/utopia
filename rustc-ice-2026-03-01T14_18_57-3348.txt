@@ -1,0 +1,397 @@
+thread 'optimize module 5fn8xd14787swixyopprfmecq' panicked at /rustc-dev/3a70d0349fa378a10c3748f1a48742e61505020f/compiler\rustc_codegen_ssa\src\back\write.rs:874:21:
+Error writing pre-lto-bitcode file `\\?\C:\Users\22877\Documents\GitHub\utopia\target\x86_64-unknown-none\debug\incremental\utopia_kernel-3fvehahf1m3ux\s-hg95pp7104-036pxoi-working\5fn8xd14787swixyopprfmecq.pre-lto.bc`: 拒绝访问。 (os error 5)
+stack backtrace:
+   0:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::win64::trace
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\win64.rs:85
+   1:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::trace_unsynchronized
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\mod.rs:66
+   2:     0x7ffbcd68ad2e - std::backtrace::Backtrace::create
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:331
+   3:     0x7ffbcd68ac6a - std::backtrace::Backtrace::force_capture
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:312
+   4:     0x7ffbcee74ffd - core[44a825b5b179b0bb]::slice::sort::unstable::heapsort::heapsort::<((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize), <((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize) as core[44a825b5b179b0bb]::cmp::PartialOrd>::lt>
+   5:     0x7ffbcd69ea34 - std::panicking::panic_with_hook
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:833
+   6:     0x7ffbcd684214 - std::panicking::panic_handler::closure$0
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:698
+   7:     0x7ffbcd6816ff - std::sys::backtrace::__rust_end_short_backtrace<std::panicking::panic_handler::closure_env$0,never$>
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\backtrace.rs:182
+   8:     0x7ffbcd684dce - std::panicking::panic_handler
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:689
+   9:     0x7ffbd193adbd - core::panicking::panic_fmt
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\core\src\panicking.rs:80
+  10:     0x7ffbcaa5e5f9 - RINvNtNtCsgg1x3f9Y2w4_3std3sys9backtrace28___rust_begin_short_backtraceNCINvXs0_Cs41n0pL9ezc4_18rustc_codegen_llvmNtB1g_18LlvmCodegenBackendNtNtNtCscYlQbvPBqyt_17rustc_codegen_ssa6traits7backend19ExtraBackendMethods18spawn_named_threadNCINvNtNtB2k_4back5wr
+  11:     0x7ffbcaa6ac44 - RINvNtNtNtNtCs5Tsr82RCc8V_4core5slice4sort6stable9quicksort9quicksortTNtNtCsgdo2cLq1ysp_5alloc6string6StringB16_ENCINvMNtB1a_5sliceSB15_7sort_byNCINvXs1o_NtNtNtB1a_11collections5btree3mapINtB2s_8BTreeMapB16_B16_EINtNtNtNtBa_4iter6traits7collect12FromIterat
+  12:     0x7ffbcd6a863c - std::sys::thread::windows::impl$0::new::thread_start
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\thread\windows.rs:58
+  13:     0x7ffcb318259d - BaseThreadInitThunk
+  14:     0x7ffcb484af78 - RtlUserThreadStart
+
+
+rustc version: 1.95.0-nightly (3a70d0349 2026-02-27)
+platform: x86_64-pc-windows-msvcthread 'optimize module 9ad3yqqee4k6pn1gfkfga3din' panicked at /rustc-dev/3a70d0349fa378a10c3748f1a48742e61505020f/compiler\rustc_codegen_ssa\src\back\write.rs:874:21:
+Error writing pre-lto-bitcode file `\\?\C:\Users\22877\Documents\GitHub\utopia\target\x86_64-unknown-none\debug\incremental\utopia_kernel-3fvehahf1m3ux\s-hg95pp7104-036pxoi-working\9ad3yqqee4k6pn1gfkfga3din.pre-lto.bc`: 拒绝访问。 (os error 5)
+stack backtrace:
+   0:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::win64::trace
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\win64.rs:85
+   1:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::trace_unsynchronized
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\mod.rs:66
+   2:     0x7ffbcd68ad2e - std::backtrace::Backtrace::create
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:331
+   3:     0x7ffbcd68ac6a - std::backtrace::Backtrace::force_capture
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:312
+   4:     0x7ffbcee74ffd - core[44a825b5b179b0bb]::slice::sort::unstable::heapsort::heapsort::<((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize), <((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize) as core[44a825b5b179b0bb]::cmp::PartialOrd>::lt>
+   5:     0x7ffbcd69ea34 - std::panicking::panic_with_hook
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:833
+   6:     0x7ffbcd684214 - std::panicking::panic_handler::closure$0
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:698
+   7:     0x7ffbcd6816ff - std::sys::backtrace::__rust_end_short_backtrace<std::panicking::panic_handler::closure_env$0,never$>
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\backtrace.rs:182
+   8:     0x7ffbcd684dce - std::panicking::panic_handler
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:689
+   9:     0x7ffbd193adbd - core::panicking::panic_fmt
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\core\src\panicking.rs:80
+  10:     0x7ffbcaa5e5f9 - RINvNtNtCsgg1x3f9Y2w4_3std3sys9backtrace28___rust_begin_short_backtraceNCINvXs0_Cs41n0pL9ezc4_18rustc_codegen_llvmNtB1g_18LlvmCodegenBackendNtNtNtCscYlQbvPBqyt_17rustc_codegen_ssa6traits7backend19ExtraBackendMethods18spawn_named_threadNCINvNtNtB2k_4back5wr
+  11:     0x7ffbcaa6ac44 - RINvNtNtNtNtCs5Tsr82RCc8V_4core5slice4sort6stable9quicksort9quicksortTNtNtCsgdo2cLq1ysp_5alloc6string6StringB16_ENCINvMNtB1a_5sliceSB15_7sort_byNCINvXs1o_NtNtNtB1a_11collections5btree3mapINtB2s_8BTreeMapB16_B16_EINtNtNtNtBa_4iter6traits7collect12FromIterat
+  12:     0x7ffbcd6a863c - std::sys::thread::windows::impl$0::new::thread_start
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\thread\windows.rs:58
+  13:     0x7ffcb318259d - BaseThreadInitThunk
+  14:     0x7ffcb484af78 - RtlUserThreadStart
+thread 'optimize module cnrxsproncs1hyjghi62xs0bp' panicked at /rustc-dev/3a70d0349fa378a10c3748f1a48742e61505020f/compiler\rustc_codegen_ssa\src\back\write.rs:874:21:
+Error writing pre-lto-bitcode file `\\?\C:\Users\22877\Documents\GitHub\utopia\target\x86_64-unknown-none\debug\incremental\utopia_kernel-3fvehahf1m3ux\s-hg95pp7104-036pxoi-working\cnrxsproncs1hyjghi62xs0bp.pre-lto.bc`: 拒绝访问。 (os error 5)
+stack backtrace:
+   0:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::win64::trace
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\win64.rs:85
+   1:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::trace_unsynchronized
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\mod.rs:66
+   2:     0x7ffbcd68ad2e - std::backtrace::Backtrace::create
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:331
+   3:     0x7ffbcd68ac6a - std::backtrace::Backtrace::force_capture
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:312
+   4:     0x7ffbcee74ffd - core[44a825b5b179b0bb]::slice::sort::unstable::heapsort::heapsort::<((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize), <((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize) as core[44a825b5b179b0bb]::cmp::PartialOrd>::lt>
+   5:     0x7ffbcd69ea34 - std::panicking::panic_with_hook
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:833
+   6:     0x7ffbcd684214 - std::panicking::panic_handler::closure$0
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:698
+   7:     0x7ffbcd6816ff - std::sys::backtrace::__rust_end_short_backtrace<std::panicking::panic_handler::closure_env$0,never$>
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\backtrace.rs:182
+   8:     0x7ffbcd684dce - std::panicking::panic_handler
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:689
+   9:     0x7ffbd193adbd - core::panicking::panic_fmt
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\core\src\panicking.rs:80
+  10:     0x7ffbcaa5e5f9 - RINvNtNtCsgg1x3f9Y2w4_3std3sys9backtrace28___rust_begin_short_backtraceNCINvXs0_Cs41n0pL9ezc4_18rustc_codegen_llvmNtB1g_18LlvmCodegenBackendNtNtNtCscYlQbvPBqyt_17rustc_codegen_ssa6traits7backend19ExtraBackendMethods18spawn_named_threadNCINvNtNtB2k_4back5wr
+  11:     0x7ffbcaa6ac44 - RINvNtNtNtNtCs5Tsr82RCc8V_4core5slice4sort6stable9quicksort9quicksortTNtNtCsgdo2cLq1ysp_5alloc6string6StringB16_ENCINvMNtB1a_5sliceSB15_7sort_byNCINvXs1o_NtNtNtB1a_11collections5btree3mapINtB2s_8BTreeMapB16_B16_EINtNtNtNtBa_4iter6traits7collect12FromIterat
+  12:     0x7ffbcd6a863c - std::sys::thread::windows::impl$0::new::thread_start
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\thread\windows.rs:58
+  13:     0x7ffcb318259d - BaseThreadInitThunk
+  14:     0x7ffcb484af78 - RtlUserThreadStart
+thread 'optimize module 7ngmx6uinqyjxv8ewb9qtvimt' panicked at /rustc-dev/3a70d0349fa378a10c3748f1a48742e61505020f/compiler\rustc_codegen_ssa\src\back\write.rs:874:21:
+Error writing pre-lto-bitcode file `\\?\C:\Users\22877\Documents\GitHub\utopia\target\x86_64-unknown-none\debug\incremental\utopia_kernel-3fvehahf1m3ux\s-hg95pp7104-036pxoi-working\7ngmx6uinqyjxv8ewb9qtvimt.pre-lto.bc`: 拒绝访问。 (os error 5)
+stack backtrace:
+   0:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::win64::trace
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\win64.rs:85
+   1:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::trace_unsynchronized
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\mod.rs:66
+   2:     0x7ffbcd68ad2e - std::backtrace::Backtrace::create
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:331
+   3:     0x7ffbcd68ac6a - std::backtrace::Backtrace::force_capture
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:312
+   4:     0x7ffbcee74ffd - core[44a825b5b179b0bb]::slice::sort::unstable::heapsort::heapsort::<((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize), <((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize) as core[44a825b5b179b0bb]::cmp::PartialOrd>::lt>
+   5:     0x7ffbcd69ea34 - std::panicking::panic_with_hook
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:833
+   6:     0x7ffbcd684214 - std::panicking::panic_handler::closure$0
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:698
+   7:     0x7ffbcd6816ff - std::sys::backtrace::__rust_end_short_backtrace<std::panicking::panic_handler::closure_env$0,never$>
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\backtrace.rs:182
+   8:     0x7ffbcd684dce - std::panicking::panic_handler
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:689
+   9:     0x7ffbd193adbd - core::panicking::panic_fmt
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\core\src\panicking.rs:80
+  10:     0x7ffbcaa5e5f9 - RINvNtNtCsgg1x3f9Y2w4_3std3sys9backtrace28___rust_begin_short_backtraceNCINvXs0_Cs41n0pL9ezc4_18rustc_codegen_llvmNtB1g_18LlvmCodegenBackendNtNtNtCscYlQbvPBqyt_17rustc_codegen_ssa6traits7backend19ExtraBackendMethods18spawn_named_threadNCINvNtNtB2k_4back5wr
+  11:     0x7ffbcaa6ac44 - RINvNtNtNtNtCs5Tsr82RCc8V_4core5slice4sort6stable9quicksort9quicksortTNtNtCsgdo2cLq1ysp_5alloc6string6StringB16_ENCINvMNtB1a_5sliceSB15_7sort_byNCINvXs1o_NtNtNtB1a_11collections5btree3mapINtB2s_8BTreeMapB16_B16_EINtNtNtNtBa_4iter6traits7collect12FromIterat
+  12:     0x7ffbcd6a863c - std::sys::thread::windows::impl$0::new::thread_start
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\thread\windows.rs:58
+  13:     0x7ffcb318259d - BaseThreadInitThunk
+  14:     0x7ffcb484af78 - RtlUserThreadStart
+thread 'optimize module cw4b2saje0m77cgafv6arf2gn' panicked at /rustc-dev/3a70d0349fa378a10c3748f1a48742e61505020f/compiler\rustc_codegen_ssa\src\back\write.rs:874:21:
+Error writing pre-lto-bitcode file `\\?\C:\Users\22877\Documents\GitHub\utopia\target\x86_64-unknown-none\debug\incremental\utopia_kernel-3fvehahf1m3ux\s-hg95pp7104-036pxoi-working\cw4b2saje0m77cgafv6arf2gn.pre-lto.bc`: 拒绝访问。 (os error 5)
+stack backtrace:
+   0:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::win64::trace
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\win64.rs:85
+   1:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::trace_unsynchronized
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\mod.rs:66
+   2:     0x7ffbcd68ad2e - std::backtrace::Backtrace::create
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:331
+   3:     0x7ffbcd68ac6a - std::backtrace::Backtrace::force_capture
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:312
+   4:     0x7ffbcee74ffd - core[44a825b5b179b0bb]::slice::sort::unstable::heapsort::heapsort::<((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize), <((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize) as core[44a825b5b179b0bb]::cmp::PartialOrd>::lt>
+   5:     0x7ffbcd69ea34 - std::panicking::panic_with_hook
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:833
+   6:     0x7ffbcd684214 - std::panicking::panic_handler::closure$0
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:698
+   7:     0x7ffbcd6816ff - std::sys::backtrace::__rust_end_short_backtrace<std::panicking::panic_handler::closure_env$0,never$>
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\backtrace.rs:182
+   8:     0x7ffbcd684dce - std::panicking::panic_handler
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:689
+   9:     0x7ffbd193adbd - core::panicking::panic_fmt
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\core\src\panicking.rs:80
+  10:     0x7ffbcaa5e5f9 - RINvNtNtCsgg1x3f9Y2w4_3std3sys9backtrace28___rust_begin_short_backtraceNCINvXs0_Cs41n0pL9ezc4_18rustc_codegen_llvmNtB1g_18LlvmCodegenBackendNtNtNtCscYlQbvPBqyt_17rustc_codegen_ssa6traits7backend19ExtraBackendMethods18spawn_named_threadNCINvNtNtB2k_4back5wr
+  11:     0x7ffbcaa6ac44 - RINvNtNtNtNtCs5Tsr82RCc8V_4core5slice4sort6stable9quicksort9quicksortTNtNtCsgdo2cLq1ysp_5alloc6string6StringB16_ENCINvMNtB1a_5sliceSB15_7sort_byNCINvXs1o_NtNtNtB1a_11collections5btree3mapINtB2s_8BTreeMapB16_B16_EINtNtNtNtBa_4iter6traits7collect12FromIterat
+  12:     0x7ffbcd6a863c - std::sys::thread::windows::impl$0::new::thread_start
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\thread\windows.rs:58
+  13:     0x7ffcb318259d - BaseThreadInitThunk
+  14:     0x7ffcb484af78 - RtlUserThreadStart
+thread 'optimize module cnm57yzdzokff3xcymephxhkl' panicked at /rustc-dev/3a70d0349fa378a10c3748f1a48742e61505020f/compiler\rustc_codegen_ssa\src\back\write.rs:874:21:
+Error writing pre-lto-bitcode file `\\?\C:\Users\22877\Documents\GitHub\utopia\target\x86_64-unknown-none\debug\incremental\utopia_kernel-3fvehahf1m3ux\s-hg95pp7104-036pxoi-working\cnm57yzdzokff3xcymephxhkl.pre-lto.bc`: 拒绝访问。 (os error 5)
+stack backtrace:
+   0:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::win64::trace
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\win64.rs:85
+   1:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::trace_unsynchronized
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\mod.rs:66
+   2:     0x7ffbcd68ad2e - std::backtrace::Backtrace::create
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:331
+   3:     0x7ffbcd68ac6a - std::backtrace::Backtrace::force_capture
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:312
+   4:     0x7ffbcee74ffd - core[44a825b5b179b0bb]::slice::sort::unstable::heapsort::heapsort::<((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize), <((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize) as core[44a825b5b179b0bb]::cmp::PartialOrd>::lt>
+   5:     0x7ffbcd69ea34 - std::panicking::panic_with_hook
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:833
+   6:     0x7ffbcd684214 - std::panicking::panic_handler::closure$0
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:698
+   7:     0x7ffbcd6816ff - std::sys::backtrace::__rust_end_short_backtrace<std::panicking::panic_handler::closure_env$0,never$>
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\backtrace.rs:182
+   8:     0x7ffbcd684dce - std::panicking::panic_handler
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:689
+   9:     0x7ffbd193adbd - core::panicking::panic_fmt
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\core\src\panicking.rs:80
+  10:     0x7ffbcaa5e5f9 - RINvNtNtCsgg1x3f9Y2w4_3std3sys9backtrace28___rust_begin_short_backtraceNCINvXs0_Cs41n0pL9ezc4_18rustc_codegen_llvmNtB1g_18LlvmCodegenBackendNtNtNtCscYlQbvPBqyt_17rustc_codegen_ssa6traits7backend19ExtraBackendMethods18spawn_named_threadNCINvNtNtB2k_4back5wr
+  11:     0x7ffbcaa6ac44 - RINvNtNtNtNtCs5Tsr82RCc8V_4core5slice4sort6stable9quicksort9quicksortTNtNtCsgdo2cLq1ysp_5alloc6string6StringB16_ENCINvMNtB1a_5sliceSB15_7sort_byNCINvXs1o_NtNtNtB1a_11collections5btree3mapINtB2s_8BTreeMapB16_B16_EINtNtNtNtBa_4iter6traits7collect12FromIterat
+  12:     0x7ffbcd6a863c - std::sys::thread::windows::impl$0::new::thread_start
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\thread\windows.rs:58
+  13:     0x7ffcb318259d - BaseThreadInitThunk
+  14:     0x7ffcb484af78 - RtlUserThreadStart
+thread 'optimize module 9foc5m7rykjgrh0gf6ogm64iz' panicked at /rustc-dev/3a70d0349fa378a10c3748f1a48742e61505020f/compiler\rustc_codegen_ssa\src\back\write.rs:874:21:
+Error writing pre-lto-bitcode file `\\?\C:\Users\22877\Documents\GitHub\utopia\target\x86_64-unknown-none\debug\incremental\utopia_kernel-3fvehahf1m3ux\s-hg95pp7104-036pxoi-working\9foc5m7rykjgrh0gf6ogm64iz.pre-lto.bc`: 拒绝访问。 (os error 5)
+stack backtrace:
+   0:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::win64::trace
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\win64.rs:85
+   1:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::trace_unsynchronized
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\mod.rs:66
+   2:     0x7ffbcd68ad2e - std::backtrace::Backtrace::create
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:331
+   3:     0x7ffbcd68ac6a - std::backtrace::Backtrace::force_capture
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:312
+   4:     0x7ffbcee74ffd - core[44a825b5b179b0bb]::slice::sort::unstable::heapsort::heapsort::<((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize), <((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize) as core[44a825b5b179b0bb]::cmp::PartialOrd>::lt>
+   5:     0x7ffbcd69ea34 - std::panicking::panic_with_hook
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:833
+   6:     0x7ffbcd684214 - std::panicking::panic_handler::closure$0
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:698
+   7:     0x7ffbcd6816ff - std::sys::backtrace::__rust_end_short_backtrace<std::panicking::panic_handler::closure_env$0,never$>
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\backtrace.rs:182
+   8:     0x7ffbcd684dce - std::panicking::panic_handler
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:689
+   9:     0x7ffbd193adbd - core::panicking::panic_fmt
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\core\src\panicking.rs:80
+  10:     0x7ffbcaa5e5f9 - RINvNtNtCsgg1x3f9Y2w4_3std3sys9backtrace28___rust_begin_short_backtraceNCINvXs0_Cs41n0pL9ezc4_18rustc_codegen_llvmNtB1g_18LlvmCodegenBackendNtNtNtCscYlQbvPBqyt_17rustc_codegen_ssa6traits7backend19ExtraBackendMethods18spawn_named_threadNCINvNtNtB2k_4back5wr
+  11:     0x7ffbcaa6ac44 - RINvNtNtNtNtCs5Tsr82RCc8V_4core5slice4sort6stable9quicksort9quicksortTNtNtCsgdo2cLq1ysp_5alloc6string6StringB16_ENCINvMNtB1a_5sliceSB15_7sort_byNCINvXs1o_NtNtNtB1a_11collections5btree3mapINtB2s_8BTreeMapB16_B16_EINtNtNtNtBa_4iter6traits7collect12FromIterat
+  12:     0x7ffbcd6a863c - std::sys::thread::windows::impl$0::new::thread_start
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\thread\windows.rs:58
+  13:     0x7ffcb318259d - BaseThreadInitThunk
+  14:     0x7ffcb484af78 - RtlUserThreadStart
+thread 'optimize module arpa03clly4p5kt27qqeprkhd' panicked at /rustc-dev/3a70d0349fa378a10c3748f1a48742e61505020f/compiler\rustc_codegen_ssa\src\back\write.rs:874:21:
+Error writing pre-lto-bitcode file `\\?\C:\Users\22877\Documents\GitHub\utopia\target\x86_64-unknown-none\debug\incremental\utopia_kernel-3fvehahf1m3ux\s-hg95pp7104-036pxoi-working\arpa03clly4p5kt27qqeprkhd.pre-lto.bc`: 拒绝访问。 (os error 5)
+stack backtrace:
+   0:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::win64::trace
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\win64.rs:85
+   1:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::trace_unsynchronized
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\mod.rs:66
+   2:     0x7ffbcd68ad2e - std::backtrace::Backtrace::create
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:331
+   3:     0x7ffbcd68ac6a - std::backtrace::Backtrace::force_capture
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:312
+   4:     0x7ffbcee74ffd - core[44a825b5b179b0bb]::slice::sort::unstable::heapsort::heapsort::<((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize), <((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize) as core[44a825b5b179b0bb]::cmp::PartialOrd>::lt>
+   5:     0x7ffbcd69ea34 - std::panicking::panic_with_hook
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:833
+   6:     0x7ffbcd684214 - std::panicking::panic_handler::closure$0
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:698
+   7:     0x7ffbcd6816ff - std::sys::backtrace::__rust_end_short_backtrace<std::panicking::panic_handler::closure_env$0,never$>
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\backtrace.rs:182
+   8:     0x7ffbcd684dce - std::panicking::panic_handler
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:689
+   9:     0x7ffbd193adbd - core::panicking::panic_fmt
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\core\src\panicking.rs:80
+  10:     0x7ffbcaa5e5f9 - RINvNtNtCsgg1x3f9Y2w4_3std3sys9backtrace28___rust_begin_short_backtraceNCINvXs0_Cs41n0pL9ezc4_18rustc_codegen_llvmNtB1g_18LlvmCodegenBackendNtNtNtCscYlQbvPBqyt_17rustc_codegen_ssa6traits7backend19ExtraBackendMethods18spawn_named_threadNCINvNtNtB2k_4back5wr
+  11:     0x7ffbcaa6ac44 - RINvNtNtNtNtCs5Tsr82RCc8V_4core5slice4sort6stable9quicksort9quicksortTNtNtCsgdo2cLq1ysp_5alloc6string6StringB16_ENCINvMNtB1a_5sliceSB15_7sort_byNCINvXs1o_NtNtNtB1a_11collections5btree3mapINtB2s_8BTreeMapB16_B16_EINtNtNtNtBa_4iter6traits7collect12FromIterat
+  12:     0x7ffbcd6a863c - std::sys::thread::windows::impl$0::new::thread_start
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\thread\windows.rs:58
+  13:     0x7ffcb318259d - BaseThreadInitThunk
+  14:     0x7ffcb484af78 - RtlUserThreadStart
+thread 'optimize module 8fba6iz2plgaf6wzobxq8zk3m' panicked at /rustc-dev/3a70d0349fa378a10c3748f1a48742e61505020f/compiler\rustc_codegen_ssa\src\back\write.rs:874:21:
+Error writing pre-lto-bitcode file `\\?\C:\Users\22877\Documents\GitHub\utopia\target\x86_64-unknown-none\debug\incremental\utopia_kernel-3fvehahf1m3ux\s-hg95pp7104-036pxoi-working\8fba6iz2plgaf6wzobxq8zk3m.pre-lto.bc`: 拒绝访问。 (os error 5)
+stack backtrace:
+   0:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::win64::trace
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\win64.rs:85
+   1:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::trace_unsynchronized
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\mod.rs:66
+   2:     0x7ffbcd68ad2e - std::backtrace::Backtrace::create
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:331
+   3:     0x7ffbcd68ac6a - std::backtrace::Backtrace::force_capture
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:312
+   4:     0x7ffbcee74ffd - core[44a825b5b179b0bb]::slice::sort::unstable::heapsort::heapsort::<((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize), <((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize) as core[44a825b5b179b0bb]::cmp::PartialOrd>::lt>
+   5:     0x7ffbcd69ea34 - std::panicking::panic_with_hook
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:833
+   6:     0x7ffbcd684214 - std::panicking::panic_handler::closure$0
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:698
+   7:     0x7ffbcd6816ff - std::sys::backtrace::__rust_end_short_backtrace<std::panicking::panic_handler::closure_env$0,never$>
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\backtrace.rs:182
+   8:     0x7ffbcd684dce - std::panicking::panic_handler
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:689
+   9:     0x7ffbd193adbd - core::panicking::panic_fmt
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\core\src\panicking.rs:80
+  10:     0x7ffbcaa5e5f9 - RINvNtNtCsgg1x3f9Y2w4_3std3sys9backtrace28___rust_begin_short_backtraceNCINvXs0_Cs41n0pL9ezc4_18rustc_codegen_llvmNtB1g_18LlvmCodegenBackendNtNtNtCscYlQbvPBqyt_17rustc_codegen_ssa6traits7backend19ExtraBackendMethods18spawn_named_threadNCINvNtNtB2k_4back5wr
+  11:     0x7ffbcaa6ac44 - RINvNtNtNtNtCs5Tsr82RCc8V_4core5slice4sort6stable9quicksort9quicksortTNtNtCsgdo2cLq1ysp_5alloc6string6StringB16_ENCINvMNtB1a_5sliceSB15_7sort_byNCINvXs1o_NtNtNtB1a_11collections5btree3mapINtB2s_8BTreeMapB16_B16_EINtNtNtNtBa_4iter6traits7collect12FromIterat
+  12:     0x7ffbcd6a863c - std::sys::thread::windows::impl$0::new::thread_start
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\thread\windows.rs:58
+  13:     0x7ffcb318259d - BaseThreadInitThunk
+  14:     0x7ffcb484af78 - RtlUserThreadStart
+thread 'optimize module 78t0p7casad9lcb75qruy9ukw' panicked at /rustc-dev/3a70d0349fa378a10c3748f1a48742e61505020f/compiler\rustc_codegen_ssa\src\back\write.rs:874:21:
+Error writing pre-lto-bitcode file `\\?\C:\Users\22877\Documents\GitHub\utopia\target\x86_64-unknown-none\debug\incremental\utopia_kernel-3fvehahf1m3ux\s-hg95pp7104-036pxoi-working\78t0p7casad9lcb75qruy9ukw.pre-lto.bc`: 拒绝访问。 (os error 5)
+stack backtrace:
+   0:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::win64::trace
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\win64.rs:85
+   1:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::trace_unsynchronized
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\mod.rs:66
+   2:     0x7ffbcd68ad2e - std::backtrace::Backtrace::create
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:331
+   3:     0x7ffbcd68ac6a - std::backtrace::Backtrace::force_capture
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:312
+   4:     0x7ffbcee74ffd - core[44a825b5b179b0bb]::slice::sort::unstable::heapsort::heapsort::<((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize), <((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize) as core[44a825b5b179b0bb]::cmp::PartialOrd>::lt>
+   5:     0x7ffbcd69ea34 - std::panicking::panic_with_hook
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:833
+   6:     0x7ffbcd684214 - std::panicking::panic_handler::closure$0
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:698
+   7:     0x7ffbcd6816ff - std::sys::backtrace::__rust_end_short_backtrace<std::panicking::panic_handler::closure_env$0,never$>
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\backtrace.rs:182
+   8:     0x7ffbcd684dce - std::panicking::panic_handler
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:689
+   9:     0x7ffbd193adbd - core::panicking::panic_fmt
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\core\src\panicking.rs:80
+  10:     0x7ffbcaa5e5f9 - RINvNtNtCsgg1x3f9Y2w4_3std3sys9backtrace28___rust_begin_short_backtraceNCINvXs0_Cs41n0pL9ezc4_18rustc_codegen_llvmNtB1g_18LlvmCodegenBackendNtNtNtCscYlQbvPBqyt_17rustc_codegen_ssa6traits7backend19ExtraBackendMethods18spawn_named_threadNCINvNtNtB2k_4back5wr
+  11:     0x7ffbcaa6ac44 - RINvNtNtNtNtCs5Tsr82RCc8V_4core5slice4sort6stable9quicksort9quicksortTNtNtCsgdo2cLq1ysp_5alloc6string6StringB16_ENCINvMNtB1a_5sliceSB15_7sort_byNCINvXs1o_NtNtNtB1a_11collections5btree3mapINtB2s_8BTreeMapB16_B16_EINtNtNtNtBa_4iter6traits7collect12FromIterat
+  12:     0x7ffbcd6a863c - std::sys::thread::windows::impl$0::new::thread_start
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\thread\windows.rs:58
+  13:     0x7ffcb318259d - BaseThreadInitThunk
+  14:     0x7ffcb484af78 - RtlUserThreadStart
+thread 'optimize module 7xjvwpauu2m76hyzowwrkhaks' panicked at /rustc-dev/3a70d0349fa378a10c3748f1a48742e61505020f/compiler\rustc_codegen_ssa\src\back\write.rs:874:21:
+Error writing pre-lto-bitcode file `\\?\C:\Users\22877\Documents\GitHub\utopia\target\x86_64-unknown-none\debug\incremental\utopia_kernel-3fvehahf1m3ux\s-hg95pp7104-036pxoi-working\7xjvwpauu2m76hyzowwrkhaks.pre-lto.bc`: 拒绝访问。 (os error 5)
+stack backtrace:
+   0:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::win64::trace
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\win64.rs:85
+   1:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::trace_unsynchronized
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\mod.rs:66
+   2:     0x7ffbcd68ad2e - std::backtrace::Backtrace::create
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:331
+   3:     0x7ffbcd68ac6a - std::backtrace::Backtrace::force_capture
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:312
+   4:     0x7ffbcee74ffd - core[44a825b5b179b0bb]::slice::sort::unstable::heapsort::heapsort::<((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize), <((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize) as core[44a825b5b179b0bb]::cmp::PartialOrd>::lt>
+   5:     0x7ffbcd69ea34 - std::panicking::panic_with_hook
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:833
+   6:     0x7ffbcd684214 - std::panicking::panic_handler::closure$0
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:698
+   7:     0x7ffbcd6816ff - std::sys::backtrace::__rust_end_short_backtrace<std::panicking::panic_handler::closure_env$0,never$>
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\backtrace.rs:182
+   8:     0x7ffbcd684dce - std::panicking::panic_handler
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:689
+   9:     0x7ffbd193adbd - core::panicking::panic_fmt
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\core\src\panicking.rs:80
+  10:     0x7ffbcaa5e5f9 - RINvNtNtCsgg1x3f9Y2w4_3std3sys9backtrace28___rust_begin_short_backtraceNCINvXs0_Cs41n0pL9ezc4_18rustc_codegen_llvmNtB1g_18LlvmCodegenBackendNtNtNtCscYlQbvPBqyt_17rustc_codegen_ssa6traits7backend19ExtraBackendMethods18spawn_named_threadNCINvNtNtB2k_4back5wr
+  11:     0x7ffbcaa6ac44 - RINvNtNtNtNtCs5Tsr82RCc8V_4core5slice4sort6stable9quicksort9quicksortTNtNtCsgdo2cLq1ysp_5alloc6string6StringB16_ENCINvMNtB1a_5sliceSB15_7sort_byNCINvXs1o_NtNtNtB1a_11collections5btree3mapINtB2s_8BTreeMapB16_B16_EINtNtNtNtBa_4iter6traits7collect12FromIterat
+  12:     0x7ffbcd6a863c - std::sys::thread::windows::impl$0::new::thread_start
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\thread\windows.rs:58
+  13:     0x7ffcb318259d - BaseThreadInitThunk
+  14:     0x7ffcb484af78 - RtlUserThreadStart
+thread 'optimize module 8b1yitt2hhqvwncxc9t5wsiku' panicked at /rustc-dev/3a70d0349fa378a10c3748f1a48742e61505020f/compiler\rustc_codegen_ssa\src\back\write.rs:874:21:
+Error writing pre-lto-bitcode file `\\?\C:\Users\22877\Documents\GitHub\utopia\target\x86_64-unknown-none\debug\incremental\utopia_kernel-3fvehahf1m3ux\s-hg95pp7104-036pxoi-working\8b1yitt2hhqvwncxc9t5wsiku.pre-lto.bc`: 拒绝访问。 (os error 5)
+stack backtrace:
+   0:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::win64::trace
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\win64.rs:85
+   1:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::trace_unsynchronized
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\mod.rs:66
+   2:     0x7ffbcd68ad2e - std::backtrace::Backtrace::create
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:331
+   3:     0x7ffbcd68ac6a - std::backtrace::Backtrace::force_capture
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:312
+   4:     0x7ffbcee74ffd - core[44a825b5b179b0bb]::slice::sort::unstable::heapsort::heapsort::<((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize), <((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize) as core[44a825b5b179b0bb]::cmp::PartialOrd>::lt>
+   5:     0x7ffbcd69ea34 - std::panicking::panic_with_hook
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:833
+   6:     0x7ffbcd684214 - std::panicking::panic_handler::closure$0
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:698
+   7:     0x7ffbcd6816ff - std::sys::backtrace::__rust_end_short_backtrace<std::panicking::panic_handler::closure_env$0,never$>
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\backtrace.rs:182
+   8:     0x7ffbcd684dce - std::panicking::panic_handler
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:689
+   9:     0x7ffbd193adbd - core::panicking::panic_fmt
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\core\src\panicking.rs:80
+  10:     0x7ffbcaa5e5f9 - RINvNtNtCsgg1x3f9Y2w4_3std3sys9backtrace28___rust_begin_short_backtraceNCINvXs0_Cs41n0pL9ezc4_18rustc_codegen_llvmNtB1g_18LlvmCodegenBackendNtNtNtCscYlQbvPBqyt_17rustc_codegen_ssa6traits7backend19ExtraBackendMethods18spawn_named_threadNCINvNtNtB2k_4back5wr
+  11:     0x7ffbcaa6ac44 - RINvNtNtNtNtCs5Tsr82RCc8V_4core5slice4sort6stable9quicksort9quicksortTNtNtCsgdo2cLq1ysp_5alloc6string6StringB16_ENCINvMNtB1a_5sliceSB15_7sort_byNCINvXs1o_NtNtNtB1a_11collections5btree3mapINtB2s_8BTreeMapB16_B16_EINtNtNtNtBa_4iter6traits7collect12FromIterat
+  12:     0x7ffbcd6a863c - std::sys::thread::windows::impl$0::new::thread_start
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\thread\windows.rs:58
+  13:     0x7ffcb318259d - BaseThreadInitThunk
+  14:     0x7ffcb484af78 - RtlUserThreadStart
+thread 'coordinator' panicked at /rustc-dev/3a70d0349fa378a10c3748f1a48742e61505020f/compiler\rustc_codegen_ssa\src\back\write.rs:1749:29:
+/rustc-dev/3a70d0349fa378a10c3748f1a48742e61505020f/compiler\rustc_codegen_ssa\src\back\write.rs:1749:29: worker thread panicked
+stack backtrace:
+   0:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::win64::trace
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\win64.rs:85
+   1:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::trace_unsynchronized
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\mod.rs:66
+   2:     0x7ffbcd68ad2e - std::backtrace::Backtrace::create
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:331
+   3:     0x7ffbcd68ac6a - std::backtrace::Backtrace::force_capture
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:312
+   4:     0x7ffbcee74ffd - core[44a825b5b179b0bb]::slice::sort::unstable::heapsort::heapsort::<((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize), <((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize) as core[44a825b5b179b0bb]::cmp::PartialOrd>::lt>
+   5:     0x7ffbcd69ea34 - std::panicking::panic_with_hook
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:833
+   6:     0x7ffbd151310f - <rustc_data_structures[fcd75dbb069c97c6]::profiling::SelfProfilerRef>::exec::cold_call::<<rustc_data_structures[fcd75dbb069c97c6]::profiling::SelfProfilerRef>::incr_result_hashing::{closure#0}>
+   7:     0x7ffbd1500089 - std[bd5f54338b31abde]::sys::backtrace::__rust_end_short_backtrace::<std[bd5f54338b31abde]::panicking::begin_panic<alloc[bce080ffbdd8a023]::string::String>::{closure#0}, !>
+   8:     0x7ffbd14f8046 - std[bd5f54338b31abde]::panicking::begin_panic::<alloc[bce080ffbdd8a023]::string::String>
+   9:     0x7ffbd15136c2 - <rustc_data_structures[fcd75dbb069c97c6]::profiling::SelfProfilerRef>::exec::cold_call::<<rustc_data_structures[fcd75dbb069c97c6]::profiling::SelfProfilerRef>::incr_result_hashing::{closure#0}>
+  10:     0x7ffbd1513745 - <rustc_data_structures[fcd75dbb069c97c6]::profiling::SelfProfilerRef>::exec::cold_call::<<rustc_data_structures[fcd75dbb069c97c6]::profiling::SelfProfilerRef>::incr_result_hashing::{closure#0}>
+  11:     0x7ffbd1500c06 - core[44a825b5b179b0bb]::slice::sort::unstable::ipnsort::<(<rustc_middle[80795c232625a933]::mir::mono::CodegenUnit>::items_in_deterministic_order::ItemSortKey, usize), <(<rustc_middle[80795c232625a933]::mir::mono::CodegenUnit>::items_in_deterministic_order::ItemSortKey, usize) as core[44a825b5b179b0bb]::cmp::PartialOrd>::lt>
+  12:     0x7ffbd154baa6 - rustc_middle[80795c232625a933]::util::bug::bug_fmt
+  13:     0x7ffbcd7736d7 - <hashbrown[fe89f471c9d42fc2]::raw::RawTable<((&rustc_codegen_llvm[2ed919ddb19493fa]::llvm::ffi::Metadata, usize), &rustc_codegen_llvm[2ed919ddb19493fa]::llvm::ffi::Metadata)>>::reserve_rehash::<hashbrown[fe89f471c9d42fc2]::map::make_hasher<(&rustc_codegen_llvm[2ed919ddb19493fa]::llvm::ffi::Metadata, usize), &rustc_codegen_llvm[2ed919ddb19493fa]::llvm::ffi::Metadata, rustc_hash[a9379d0360382425]::FxBuildHasher>::{closure#0}>
+  14:     0x7ffbcaa5fe8e - RINvNtNtCsgg1x3f9Y2w4_3std3sys9backtrace28___rust_begin_short_backtraceNCINvXs0_Cs41n0pL9ezc4_18rustc_codegen_llvmNtB1g_18LlvmCodegenBackendNtNtNtCscYlQbvPBqyt_17rustc_codegen_ssa6traits7backend19ExtraBackendMethods18spawn_named_threadNCINvNtNtB2k_4back5wr
+  15:     0x7ffbcaa6b2ae - RINvNtNtNtNtCs5Tsr82RCc8V_4core5slice4sort6stable9quicksort9quicksortTNtNtCsgdo2cLq1ysp_5alloc6string6StringB16_ENCINvMNtB1a_5sliceSB15_7sort_byNCINvXs1o_NtNtNtB1a_11collections5btree3mapINtB2s_8BTreeMapB16_B16_EINtNtNtNtBa_4iter6traits7collect12FromIterat
+  16:     0x7ffbcd6a863c - std::sys::thread::windows::impl$0::new::thread_start
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\thread\windows.rs:58
+  17:     0x7ffcb318259d - BaseThreadInitThunk
+  18:     0x7ffcb484af78 - RtlUserThreadStart
+thread 'rustc' panicked at /rustc-dev/3a70d0349fa378a10c3748f1a48742e61505020f/compiler\rustc_codegen_ssa\src\back\write.rs:2163:17:
+/rustc-dev/3a70d0349fa378a10c3748f1a48742e61505020f/compiler\rustc_codegen_ssa\src\back\write.rs:2163:17: panic during codegen/LLVM phase
+stack backtrace:
+   0:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::win64::trace
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\win64.rs:85
+   1:     0x7ffbcd68ad2e - std::backtrace_rs::backtrace::trace_unsynchronized
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\..\..\backtrace\src\backtrace\mod.rs:66
+   2:     0x7ffbcd68ad2e - std::backtrace::Backtrace::create
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:331
+   3:     0x7ffbcd68ac6a - std::backtrace::Backtrace::force_capture
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\backtrace.rs:312
+   4:     0x7ffbcee74ffd - core[44a825b5b179b0bb]::slice::sort::unstable::heapsort::heapsort::<((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize), <((rustc_lint_defs[6b2fe4615e1172e9]::Level, &str), usize) as core[44a825b5b179b0bb]::cmp::PartialOrd>::lt>
+   5:     0x7ffbcd69ea34 - std::panicking::panic_with_hook
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\panicking.rs:833
+   6:     0x7ffbd151310f - <rustc_data_structures[fcd75dbb069c97c6]::profiling::SelfProfilerRef>::exec::cold_call::<<rustc_data_structures[fcd75dbb069c97c6]::profiling::SelfProfilerRef>::incr_result_hashing::{closure#0}>
+   7:     0x7ffbd1500089 - std[bd5f54338b31abde]::sys::backtrace::__rust_end_short_backtrace::<std[bd5f54338b31abde]::panicking::begin_panic<alloc[bce080ffbdd8a023]::string::String>::{closure#0}, !>
+   8:     0x7ffbd14f8046 - std[bd5f54338b31abde]::panicking::begin_panic::<alloc[bce080ffbdd8a023]::string::String>
+   9:     0x7ffbd15136c2 - <rustc_data_structures[fcd75dbb069c97c6]::profiling::SelfProfilerRef>::exec::cold_call::<<rustc_data_structures[fcd75dbb069c97c6]::profiling::SelfProfilerRef>::incr_result_hashing::{closure#0}>
+  10:     0x7ffbd1513745 - <rustc_data_structures[fcd75dbb069c97c6]::profiling::SelfProfilerRef>::exec::cold_call::<<rustc_data_structures[fcd75dbb069c97c6]::profiling::SelfProfilerRef>::incr_result_hashing::{closure#0}>
+  11:     0x7ffbd1500c06 - core[44a825b5b179b0bb]::slice::sort::unstable::ipnsort::<(<rustc_middle[80795c232625a933]::mir::mono::CodegenUnit>::items_in_deterministic_order::ItemSortKey, usize), <(<rustc_middle[80795c232625a933]::mir::mono::CodegenUnit>::items_in_deterministic_order::ItemSortKey, usize) as core[44a825b5b179b0bb]::cmp::PartialOrd>::lt>
+  12:     0x7ffbd154baa6 - rustc_middle[80795c232625a933]::util::bug::bug_fmt
+  13:     0x7ffbcaab6b26 - <rustc_codegen_llvm[2ed919ddb19493fa]::LlvmCodegenBackend as rustc_codegen_ssa[971c07bc0d91d5ab]::traits::backend::CodegenBackend>::join_codegen
+  14:     0x7ffbcaa14d72 - <rustc_interface[9a59f6815f37883a]::queries::Linker>::link
+  15:     0x7ffbca9baf36 - std[bd5f54338b31abde]::sys::backtrace::__rust_begin_short_backtrace::<std[bd5f54338b31abde]::thread::lifecycle::spawn_unchecked<ctrlc[9ac1ee75abc20029]::set_handler_inner<rustc_driver_impl[86b999e305dc939c]::install_ctrlc_handler::{closure#0}>::{closure#0}, ()>::{closure#1}::{closure#0}::{closure#0}, ()>
+  16:     0x7ffbca9b6ba1 - RINvNtNtCsgg1x3f9Y2w4_3std3sys9backtrace28___rust_begin_short_backtraceNCNCINvNtCsdfBKTAG6FZu_15rustc_interface4util26run_in_thread_with_globalsNCINvB1e_31run_in_thread_pool_with_globalsNCINvNtB1g_9interface12run_compileruNCNvCsbz8yC4GadFE_17rustc_driver_i
+  17:     0x7ffbca9bfbaa - std[bd5f54338b31abde]::sys::backtrace::__rust_begin_short_backtrace::<std[bd5f54338b31abde]::thread::lifecycle::spawn_unchecked<ctrlc[9ac1ee75abc20029]::set_handler_inner<rustc_driver_impl[86b999e305dc939c]::install_ctrlc_handler::{closure#0}>::{closure#0}, ()>::{closure#1}::{closure#0}::{closure#0}, ()>
+  18:     0x7ffbcd6a863c - std::sys::thread::windows::impl$0::new::thread_start
+                               at /rustc/3a70d0349fa378a10c3748f1a48742e61505020f/library\std\src\sys\thread\windows.rs:58
+  19:     0x7ffcb318259d - BaseThreadInitThunk
+  20:     0x7ffcb484af78 - RtlUserThreadStart

@@ -16,7 +16,23 @@ pub fn init_serial() -> KernelResult<()> {
 pub unsafe fn init_serial_early() {
     let mut serial_port = SerialPort::new(COM1_BASE);
     serial_port.init();
-    *SERIAL1.lock() = Some(serial_port);
+    // 使用裸指针直接写入，避免 Mutex 的复杂性
+    let ptr = 0x3F8 as *mut u8;
+    // 发送测试字符
+    ptr.write_volatile(b'X');
+}
+
+/// 早期打印字符（不使用 Mutex）
+pub unsafe fn early_print_byte(byte: u8) {
+    let ptr = 0x3F8 as *mut u8;
+    ptr.write_volatile(byte);
+}
+
+/// 早期打印字符串
+pub unsafe fn early_print_str(s: &str) {
+    for byte in s.bytes() {
+        early_print_byte(byte);
+    }
 }
 
 #[doc(hidden)]

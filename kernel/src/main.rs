@@ -16,7 +16,7 @@ pub mod boot_info;
 
 // 根据特性标志选择引导方式
 #[cfg(feature = "limine")]
-pub mod limine_entry;
+pub mod limine_protocol;
 
 // Multiboot 2 支持
 #[cfg(feature = "multiboot2")]
@@ -56,7 +56,12 @@ fn kernel_main(boot_info: &'static mut BootInfo) -> ! {
 
 /// Limine 引导入口点
 #[cfg(feature = "limine")]
-pub fn kernel_main_limine(_boot_info: &limine_entry::LimineBootInfo) -> ! {
+pub fn kernel_main_limine(_boot_info: &limine_protocol::LimineBootInfo) -> ! {
+    // 使用早期串口输出（不依赖日志系统）
+    unsafe {
+        limine_protocol::print_early("=== kernel_main_limine ===\n");
+    }
+    
     // 调用通用的内核初始化
     kernel_init_common();
 }
@@ -64,15 +69,51 @@ pub fn kernel_main_limine(_boot_info: &limine_entry::LimineBootInfo) -> ! {
 /// Multiboot 2 引导入口点
 #[cfg(feature = "multiboot2")]
 pub fn kernel_main_multiboot2(_boot_info: &multiboot2::Multiboot2BootInfo) -> ! {
+    // 使用早期串口输出（不依赖日志系统）
+    unsafe {
+        multiboot2::print_early("=== kernel_main_multiboot2 ===\n");
+    }
+    
     // 调用通用的内核初始化
     kernel_init_common();
 }
 
 /// 通用的内核初始化函数
 fn kernel_init_common() -> ! {
+    // 使用早期串口输出调试信息（根据特性标志选择）
+    #[cfg(feature = "multiboot2")]
+    unsafe {
+        multiboot2::print_early("=== kernel_init_common START ===\n");
+        multiboot2::print_early("Initializing logging...\n");
+    }
+    
+    #[cfg(feature = "limine")]
+    unsafe {
+        limine_protocol::print_early("=== kernel_init_common START ===\n");
+        limine_protocol::print_early("Initializing logging...\n");
+    }
+    
     // 初始化日志记录器
     if let Err(e) = logging::init() {
-        panic!("Failed to initialize logger: {}", e);
+        #[cfg(feature = "multiboot2")]
+        unsafe {
+            multiboot2::print_early("Logging init FAILED!\n");
+        }
+        #[cfg(feature = "limine")]
+        unsafe {
+            limine_protocol::print_early("Logging init FAILED!\n");
+        }
+        panic!("Failed to initialize logger: {:?}", e);
+    }
+    
+    #[cfg(feature = "multiboot2")]
+    unsafe {
+        multiboot2::print_early("Logging init OK!\n");
+    }
+    
+    #[cfg(feature = "limine")]
+    unsafe {
+        limine_protocol::print_early("Logging init OK!\n");
     }
 
     #[cfg(feature = "limine")]
@@ -105,6 +146,16 @@ fn kernel_init_common() -> ! {
     }
     
     log::info!("All startup messages completed");
+    
+    #[cfg(feature = "multiboot2")]
+    unsafe {
+        multiboot2::print_early("=== Entering main loop ===\n");
+    }
+    
+    #[cfg(feature = "limine")]
+    unsafe {
+        limine_protocol::print_early("=== Entering main loop ===\n");
+    }
     
     // 进入主循环（不会返回）
     kernel_main_loop();

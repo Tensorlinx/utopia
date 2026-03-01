@@ -7,6 +7,9 @@ edition = "2021"
 name = "utopia_kernel"
 path = "src/main.rs"
 
+[package.metadata.bootloader]
+map-physical-memory = true
+
 [features]
 default = ["bootloader_api"]
 bootloader_api = ["dep:bootloader_api"]
