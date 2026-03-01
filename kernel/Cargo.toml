@@ -7,8 +7,14 @@ edition = "2021"
 name = "utopia_kernel"
 path = "src/main.rs"
 
+[features]
+default = ["bootloader_api"]
+bootloader_api = ["dep:bootloader_api"]
+limine = []
+multiboot2 = []
+
 [dependencies]
-bootloader_api = { workspace = true }
+bootloader_api = { workspace = true, optional = true }
 volatile = { workspace = true }
 spin = { workspace = true }
 uart_16550 = { workspace = true }

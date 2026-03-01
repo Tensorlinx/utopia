@@ -4,59 +4,114 @@
 #![test_runner(crate::test_runner)]
 #![reexport_test_harness_main = "test_main"]
 
-use core::panic::PanicInfo;
-use bootloader_api::{BootInfo, entry_point};
 use crate::constants::qemu::*;
 
-mod vga_buffer;
 mod serial;
 mod logging;
-mod logo;
 mod constants;
-mod font;
 mod error;
 
+// 引导信息抽象层
+pub mod boot_info;
+
+// 根据特性标志选择引导方式
+#[cfg(feature = "limine")]
+pub mod limine_entry;
+
+// Multiboot 2 支持
+#[cfg(feature = "multiboot2")]
+pub mod multiboot2;
+
+// 默认使用 bootloader_api（向后兼容）
+#[cfg(not(any(feature = "limine", feature = "multiboot2")))]
+use bootloader_api::{BootInfo, entry_point};
+
+/// 帧缓冲区包装类型
+pub struct FrameBufferWrapper {
+    pub buffer: &'static mut [u8],
+    pub info: FrameBufferInfo,
+}
+
+/// 帧缓冲区信息
+pub struct FrameBufferInfo {
+    pub width: usize,
+    pub height: usize,
+    pub stride: usize,
+    pub pixel_format: boot_info::PixelFormat,
+    pub bytes_per_pixel: usize,
+}
+
+/// 内核主函数 - 被引导加载程序调用 (bootloader_api)
+#[cfg(not(any(feature = "limine", feature = "multiboot2")))]
 entry_point!(kernel_main);
 
+#[cfg(not(any(feature = "limine", feature = "multiboot2")))]
 fn kernel_main(boot_info: &'static mut BootInfo) -> ! {
+    // 从 bootloader_api 的 BootInfo 中提取帧缓冲区
+    let _framebuffer = boot_info.framebuffer.as_mut().expect("No framebuffer provided");
+    
+    // 调用通用的内核初始化
+    kernel_init_common();
+}
+
+/// Limine 引导入口点
+#[cfg(feature = "limine")]
+pub fn kernel_main_limine(_boot_info: &limine_entry::LimineBootInfo) -> ! {
+    // 调用通用的内核初始化
+    kernel_init_common();
+}
+
+/// Multiboot 2 引导入口点
+#[cfg(feature = "multiboot2")]
+pub fn kernel_main_multiboot2(_boot_info: &multiboot2::Multiboot2BootInfo) -> ! {
+    // 调用通用的内核初始化
+    kernel_init_common();
+}
+
+/// 通用的内核初始化函数
+fn kernel_init_common() -> ! {
     // 初始化日志记录器
     if let Err(e) = logging::init() {
-        // 如果日志初始化失败，使用panic处理
         panic!("Failed to initialize logger: {}", e);
     }
 
-    // 获取framebuffer信息
-    let framebuffer = boot_info.framebuffer.as_mut().expect("No framebuffer provided");
-    log::info!("Framebuffer: {}x{}, format: {:?}", 
-        framebuffer.info().width, framebuffer.info().height, framebuffer.info().pixel_format);
-
-    // 初始化帧缓冲区文本输出
-    if let Err(e) = vga_buffer::init_vga(framebuffer) {
-        panic!("Failed to initialize VGA: {}", e);
-    }
-    log::info!("VGA initialized");
-
-    // 打印LOGO
-    logo::print_logo();
-    log::info!("Kernel started!");
+    #[cfg(feature = "limine")]
+    log::info!("Kernel initialized with Limine bootloader!");
+    
+    #[cfg(feature = "multiboot2")]
+    log::info!("Kernel initialized with Multiboot 2!");
+    
+    #[cfg(not(any(feature = "limine", feature = "multiboot2")))]
+    log::info!("Kernel initialized with bootloader_api!");
 
     // 内核启动完成提示
     let startup_messages = [
         "=== UTOPIA KERNEL STARTED ===",
-        "STEP 1: VGA INIT OK",
-        "STEP 2: KERNEL RUNNING", 
-        "STEP 3: VGA OUTPUT TEST",
+        "STEP 1: LOGGING INIT OK",
+        "STEP 2: KERNEL RUNNING",
+        #[cfg(feature = "limine")]
+        "STEP 3: LIMINE BOOT SUCCESS",
+        #[cfg(feature = "multiboot2")]
+        "STEP 3: MULTIBOOT 2 BOOT SUCCESS",
+        #[cfg(not(any(feature = "limine", feature = "multiboot2")))]
+        "STEP 3: BOOTLOADER_API BOOT SUCCESS",
         "STEP 4: ALL SYSTEMS OK!",
         "=========================",
         "STEP 5: ENTERING MAIN LOOP..."
     ];
     
     for message in &startup_messages {
-        println!("{}", message);
         log::info!("{}", message);
     }
     
     log::info!("All startup messages completed");
+    
+    // 进入主循环（不会返回）
+    kernel_main_loop();
+}
+
+/// 内核主循环
+fn kernel_main_loop() -> ! {
     // 使用hlt指令的无限循环，避免CPU占用过高
     loop {
         x86_64::instructions::hlt();
@@ -65,8 +120,9 @@ fn kernel_main(boot_info: &'static mut BootInfo) -> ! {
 
 /// This function is called on panic in non-test mode.
 #[cfg(not(test))]
+#[cfg(not(any(feature = "limine", feature = "multiboot2")))]
 #[panic_handler]
-fn panic(info: &PanicInfo) -> ! {
+fn panic(info: &core::panic::PanicInfo) -> ! {
     log::error!("[PANIC] {}", info);
     // 禁用中断并halt
     x86_64::instructions::interrupts::disable();
@@ -107,7 +163,7 @@ pub fn exit_qemu(exit_code: QemuExitCode) {
 
 #[cfg(test)]
 #[panic_handler]
-fn panic(info: &PanicInfo) -> ! {
+fn panic(info: &core::panic::PanicInfo) -> ! {
     println!("[failed]\n");
     println!("Error: {}\n", info);
     exit_qemu(QemuExitCode::Failed);

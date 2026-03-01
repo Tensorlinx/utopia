@@ -318,6 +318,14 @@ pub fn init_vga(framebuffer: &'static mut FrameBuffer) -> KernelResult<()> {
     Ok(())
 }
 
+/// 使用 FrameBufferWrapper 初始化 VGA
+pub fn init_vga_from_wrapper(wrapper: &crate::FrameBufferWrapper) -> KernelResult<()> {
+    let mut writer = FrameBufferWriter::from_wrapper(wrapper);
+    writer.clear(); // 清屏
+    *WRITER.lock() = Some(writer);
+    Ok(())
+}
+
 #[macro_export]
 macro_rules! print {
     ($($arg:tt)*) => {{

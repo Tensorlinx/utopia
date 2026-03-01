@@ -12,6 +12,13 @@ pub fn init_serial() -> KernelResult<()> {
     Ok(())
 }
 
+/// 早期串口初始化（用于引导加载程序入口）
+pub unsafe fn init_serial_early() {
+    let mut serial_port = SerialPort::new(COM1_BASE);
+    serial_port.init();
+    *SERIAL1.lock() = Some(serial_port);
+}
+
 #[doc(hidden)]
 pub fn _print(args: ::core::fmt::Arguments) -> KernelResult<()> {
     use core::fmt::Write;
