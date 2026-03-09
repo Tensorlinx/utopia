@@ -1,0 +1,14 @@
+[package]
+name = "utopia_limine"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "utopia_limine"
+path = "src/main.rs"
+
+[dependencies]
+# 内核需要在构建前手动构建
+
+[build-dependencies]
+anyhow = "1.0"

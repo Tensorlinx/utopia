@@ -2,3 +2,10 @@
 target = "x86_64-unknown-none"
 build-std = ["core", "compiler_builtins", "alloc"]
 build-std-features = ["compiler-builtins-mem"]
+
+# 使用自定义链接脚本
+[target.x86_64-unknown-none]
+rustflags = [
+    "-C", "link-arg=-Tc:/Users/22877/Documents/GitHub/utopia/kernel/linker.ld",
+    "-C", "linker=rust-lld",
+]

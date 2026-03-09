@@ -1,8 +1,7 @@
 use uart_16550::SerialPort;
 use spin::Mutex;
 use crate::constants::serial::*;
-use crate::error::{KernelResult, KernelError, SafeWrite};
-use core::fmt;
+use crate::error::{KernelResult, KernelError};
 
 pub static SERIAL1: Mutex<Option<SerialPort>> = Mutex::new(None);
 
@@ -13,6 +12,29 @@ pub fn init_serial() -> KernelResult<()> {
     Ok(())
 }
 
+/// 早期串口初始化（用于引导加载程序入口）
+pub unsafe fn init_serial_early() {
+    let mut serial_port = SerialPort::new(COM1_BASE);
+    serial_port.init();
+    // 使用裸指针直接写入，避免 Mutex 的复杂性
+    let ptr = 0x3F8 as *mut u8;
+    // 发送测试字符
+    ptr.write_volatile(b'X');
+}
+
+/// 早期打印字符（不使用 Mutex）
+pub unsafe fn early_print_byte(byte: u8) {
+    let ptr = 0x3F8 as *mut u8;
+    ptr.write_volatile(byte);
+}
+
+/// 早期打印字符串
+pub unsafe fn early_print_str(s: &str) {
+    for byte in s.bytes() {
+        early_print_byte(byte);
+    }
+}
+
 #[doc(hidden)]
 pub fn _print(args: ::core::fmt::Arguments) -> KernelResult<()> {
     use core::fmt::Write;
@@ -20,7 +42,7 @@ pub fn _print(args: ::core::fmt::Arguments) -> KernelResult<()> {
         serial.write_fmt(args).map_err(|_| KernelError::WriteFailed)?;
         Ok(())
     } else {
-        Err(KernelError::SerialInitFailed)
+        Err(KernelError::HardwareError)
     }
 }
 
