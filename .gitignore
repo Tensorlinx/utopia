@@ -55,6 +55,3 @@ qemu.log
 *.a
 *.so
 *.dylib
-
-# Documentation files
-*.md

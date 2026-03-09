@@ -1,0 +1,29 @@
+[package]
+name = "czxt-os"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bootloader_api = "0.10"
+volatile = "0.2.6"
+spin = "0.5"
+x86_64 = "0.14"
+uart_16550 = "0.2"
+linked_list_allocator = "0.9"
+
+[dependencies.lazy_static]
+version = "1.0"
+features = ["spin_no_std"]
+
+[[bin]]
+name = "kernel"
+path = "src/main.rs"
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+
+[package.metadata.bootimage]
+run-command = ["C:\\Program Files\\qemu\\qemu-system-x86_64.exe", "-drive", "format=raw,file={}"]
