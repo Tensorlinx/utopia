@@ -1,6 +1,6 @@
 # UTOPIA Operating System Kernel (DEPRECATED)
 
-> ⚠️ **DEPRECATED**: This version is no longer maintained and has been abandoned. The new kernel has been migrated to [xxxx](https://github.com/your-new-repo-link).
+> ⚠️ **DEPRECATED**: This version is no longer maintained and has been abandoned. The new kernel has been migrated to [utopia2026](https://github.com/UtopiaKernel/utopia_2026).
 
 [![1752970302233.png](https://i.postimg.cc/Vv79JnMS/1752970302233.png)](https://postimg.cc/8f6f3FZD)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
