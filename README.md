@@ -1,6 +1,6 @@
 # UTOPIA Operating System Kernel (DEPRECATED)
 
-> ⚠️ **DEPRECATED**: This version is no longer maintained and has been abandoned. The new kernel has been migrated to [xxxx](https://github.com/your-new-repo-link).
+> ⚠️ **DEPRECATED**: This version is no longer maintained and has been abandoned. The new kernel has been migrated to [utopia2026](https://github.com/UtopiaKernel/utopia_2026).
 
 [![1752970302233.png](https://i.postimg.cc/Vv79JnMS/1752970302233.png)](https://postimg.cc/8f6f3FZD)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
@@ -9,113 +9,193 @@
 [![Boot](https://img.shields.io/badge/boot-UEFI%2FBIOS-green.svg)](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface)
 [![Status](https://img.shields.io/badge/status-deprecated-red.svg)](https://github.com/)
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 使用 Cargo 命令（推荐）
+### Using Cargo Commands (Recommended)
 
-项目已配置了 Cargo 别名，您可以使用以下命令：
+The project has configured Cargo aliases. You can use the following commands:
 
-#### 构建命令
+#### Build Commands
 ```bash
-# 构建整个项目
+# Build the entire project
 cargo build
 
-# 仅构建内核
+# Build kernel only
 cargo kernel
 
-# 仅构建启动器
-cargo bootloader
+# Build BIOS bootloader
+cargo build -p utopia_bootloader --bin utopia_bootloader
+
+# Build UEFI bootloader
+cargo build -p utopia_bootloader --bin utopia_bootloader_uefi --features uefi_mode
+
+# Build kernel (Multiboot2 support, for Limine)
+cargo build --target x86_64-unknown-none -p utopia_kernel --no-default-features --features multiboot2
 ```
 
-#### 运行命令
+#### Run Commands
 ```bash
-# 运行内核（推荐方式）
-cargo run
+# Run kernel - BIOS mode (default)
+cargo run -p utopia_bootloader --bin utopia_bootloader
 
-# 或者使用别名
+# Run kernel - UEFI mode
+cargo run -p utopia_bootloader --bin utopia_bootloader_uefi --features uefi_mode
+
+# Run kernel - Limine bootloader (recommended for debugging)
+cargo run -p utopia_limine
+
+# Or use aliases
 cargo qemu
 cargo debug
 cargo dev
 cargo start
 ```
 
-#### 开发工具
+#### Limine Quick Start (Recommended)
 ```bash
-# 运行测试
+# Windows PowerShell
+.\build_and_run_limine.ps1
+
+# Linux/macOS/WSL
+./build_and_run_limine.sh
+```
+
+#### Development Tools
+```bash
+# Run tests
 cargo test
 
-# 清理构建产物
+# Clean build artifacts
 cargo clean
 
-# 安装开发工具
+# Install development tools
 cargo install-tools
 ```
 
-### 传统方式（Makefile）
+### Traditional Method (Makefile)
 
-项目仍然支持传统的 Makefile 命令：
+The project still supports traditional Makefile commands:
 
 ```bash
-# 构建项目
+# Build project
 make build
 
-# 运行内核
+# Run kernel - BIOS mode (default)
 make run
 
-# 清理
+# Run kernel - UEFI mode
+make run-uefi
+
+# Run kernel - Limine bootloader
+make run-limine
+
+# Clean
 make clean
 ```
 
-## 📁 项目结构
+## 📁 Project Structure
 
 ```
 utopia/
-├── kernel/           # 内核源代码
-├── bootloader/       # 引导启动器
+├── kernel/                      # Kernel source code
+│   ├── src/
+│   │   ├── main.rs             # Kernel main entry
+│   │   ├── multiboot2.rs       # Multiboot2 protocol support
+│   │   ├── limine_entry.rs     # Limine boot support
+│   │   ├── serial.rs           # Serial communication
+│   │   ├── logging.rs          # Logging system
+│   │   └── ...
+│   └── linker.ld               # Linker script
+├── bootloader/                  # Custom bootloader
+├── limine/                      # Limine bootloader support
+│   ├── limine.conf             # Limine configuration
+│   └── limine-10.8.2-binary/   # Limine binaries
+├── development report/          # Development documentation
 ├── .cargo/
-│   └── config.toml   # Cargo 别名配置
-├── Cargo.toml        # Workspace 配置
-└── Makefile          # 传统构建脚本
+│   └── config.toml             # Cargo alias configuration
+├── Cargo.toml                  # Workspace configuration
+├── Makefile                    # Traditional build script
+├── build_and_run_limine.ps1    # Windows quick start script
+├── build_and_run_limine.sh     # Linux/macOS quick start script
+└── LIMINE_BUILD_GUIDE.md       # Limine build guide
 ```
 
-## 🔧 技术栈
+## 🔧 Tech Stack
 
-- **语言**: Rust (nightly)
-- **目标平台**: `x86_64-unknown-none`
-- **启动方式**: BIOS/UEFI 双启动支持
-- **虚拟化**: QEMU
+- **Language**: Rust (nightly)
+- **Target Platform**: `x86_64-unknown-none`
+- **Boot Methods**: 
+  - BIOS/UEFI dual boot support (bootloader_api)
+  - Limine bootloader (Multiboot2 protocol)
+- **Virtualization**: QEMU
+- **Debugging**: Serial output (COM1)
 
-## 📋 可用命令
+## 📋 Available Commands
 
-| 命令 | 功能 | 等价命令 |
-|------|------|----------|
-| `cargo build` | 构建整个项目 | `make build` |
-| `cargo kernel` | 仅构建内核 | - |
-| `cargo bootloader` | 仅构建启动器 | - |
-| `cargo run` | 运行内核 | `make run` |
-| `cargo qemu` | 运行内核（别名） | `make qemu` |
-| `cargo debug` | 调试模式运行 | `make debug` |
-| `cargo test` | 运行测试 | `make test` |
-| `cargo clean` | 清理构建产物 | `make clean` |
-| `cargo install-tools` | 安装开发工具 | `make install-tools` |
+| Command | Function | Equivalent Command |
+|---------|----------|-------------------|
+| `cargo build` | Build entire project | `make build` |
+| `cargo kernel` | Build kernel only | - |
+| `cargo run -p utopia_bootloader --bin utopia_bootloader` | Run BIOS mode | `make run` |
+| `cargo run -p utopia_bootloader --bin utopia_bootloader_uefi --features uefi_mode` | Run UEFI mode | `make run-uefi` |
+| `cargo run -p utopia_limine` | Run Limine bootloader | `make run-limine` |
+| `.\build_and_run_limine.ps1` | Quick build & run (Windows) | - |
+| `./build_and_run_limine.sh` | Quick build & run (Linux/macOS) | - |
+| `cargo qemu` | Run kernel (alias) | `make qemu` |
+| `cargo debug` | Run in debug mode | `make debug` |
+| `cargo test` | Run tests | `make test` |
+| `cargo clean` | Clean build artifacts | `make clean` |
+| `cargo install-tools` | Install dev tools | `make install-tools` |
 
-## 🎯 开发工作流
+## 🎯 Development Workflow
 
-1. **安装工具链**: `cargo install-tools`
-2. **构建内核**: `cargo kernel`
-3. **运行测试**: `cargo test`
-4. **启动内核**: `cargo run`
+### Method 1: Using Limine (Recommended for Debugging)
 
-## � 注意事项
+1. **Install toolchain**: `cargo install-tools`
+2. **Build and run**: `.\build_and_run_limine.ps1` (Windows) or `./build_and_run_limine.sh` (Linux/macOS)
+3. **View output**: Serial output will be displayed in QEMU console
 
-- 需要 Rust nightly 工具链
-- QEMU 需要预先安装
-- 项目使用自定义启动器而非 bootimage 工具
+### Method 2: Using bootloader_api
 
-## 🤝 贡献
+1. **Install toolchain**: `cargo install-tools`
+2. **Build kernel**: `cargo kernel`
+3. **Run tests**: `cargo test`
+4. **Launch kernel**: `cargo run`
 
-欢迎提交 Issue 和 Pull Request！
+## 🐛 Troubleshooting
 
----
+### Limine Boot Failure
 
-*项目状态: 可构建和运行*
+If you encounter `multiboot2: Failed to open executable` error:
+
+1. Ensure kernel is compiled with multiboot2 feature:
+   ```bash
+   cargo build --target x86_64-unknown-none -p utopia_kernel --no-default-features --features multiboot2
+   ```
+
+2. Clean and rebuild:
+   ```bash
+   cargo clean
+   .\build_and_run_limine.ps1
+   ```
+
+3. See detailed guide: `LIMINE_BUILD_GUIDE.md`
+
+### WSL Timeout Issues
+
+If the build script times out in WSL, this is normal. The build script will automatically fall back to the original disk image creation method.
+
+## 📝 Notes
+
+- Requires Rust nightly toolchain
+- QEMU must be pre-installed
+- Project supports three boot methods:
+  1. **bootloader_api** - Default method, supports BIOS/UEFI
+  2. **Limine** - Uses Multiboot2 protocol, recommended for debugging
+  3. **Custom bootloader** - Fully custom boot process
+- Limine binaries are included in `limine/limine-10.8.2-binary/` directory
+- Serial output uses COM1 port, baud rate 115200
+
+## 🤝 Contributing
+
+Issues and Pull Requests are welcome!
